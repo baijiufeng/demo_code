@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桑基图 - Mermaid 11.12.1</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #sankey-diagram {
+            display: flex;
+            justify-content: center;
+        }
+        .mermaid {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>桑基图示例</h1>
+        <div id="sankey-diagram">
+            <div class="mermaid">
+                sankey-beta
+                    Traffic, SearchEngine, 500
+                    Traffic, DirectAccess, 300
+                    Traffic, SocialMedia, 200
+                    SearchEngine, Baidu, 350
+                    SearchEngine, Google, 150
+                    DirectAccess, Bookmark, 150
+                    DirectAccess, URLInput, 150
+                    SocialMedia, WeChat, 120
+                    SocialMedia, Weibo, 80
+                    Baidu, ProductPage, 280
+                    Baidu, BlogArticle, 70
+                    Google, ProductPage, 100
+                    Google, BlogArticle, 50
+                    Bookmark, ProductPage, 100
+                    Bookmark, BlogArticle, 50
+                    URLInput, ProductPage, 120
+                    URLInput, AboutUs, 30
+                    WeChat, ProductPage, 80
+                    WeChat, BlogArticle, 40
+                    Weibo, ProductPage, 50
+                    Weibo, BlogArticle, 30
+                    ProductPage, Purchase, 180
+                    ProductPage, Register, 150
+                    ProductPage, Bounce, 250
+                    BlogArticle, Register, 120
+                    BlogArticle, Bounce, 100
+                    AboutUs, Bounce, 20
+                    AboutUs, Register, 10
+            </div>
+        </div>
+    </div>
+
+    <script id="label-map-data" type="application/json">
+        {
+            "Traffic": "访问量",
+            "SearchEngine": "搜索引擎",
+            "DirectAccess": "直接访问",
+            "SocialMedia": "社交媒体",
+            "Baidu": "百度",
+            "Google": "谷歌",
+            "Bookmark": "书签",
+            "URLInput": "网址输入",
+            "WeChat": "微信",
+            "Weibo": "微博",
+            "ProductPage": "产品页面",
+            "BlogArticle": "博客文章",
+            "AboutUs": "关于我们",
+            "Purchase": "购买转化",
+            "Register": "注册用户",
+            "Bounce": "跳出"
+        }
+    </script>
+    <script src="sankey.js"></script>
+</body>
+</html>
