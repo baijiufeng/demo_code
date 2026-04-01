@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindElixir 思维导图示例</title>
+    <!-- 1. 引入 MindElixir 样式文件 -->
+    <link rel="stylesheet" href="./mindelixir/mindelixir-style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        /* 2. 设置容器高度，MindElixir 需要一个明确的高度 */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 3. 定义挂载容器 -->
+    <div id="map"></div>
+
+    <!-- 4. 引入 MindElixir 核心库 (ES Module) -->
+    <script type="module">
+        import MindElixir from './mindelixir/MindElixir.js';
+
+        // 5. 配置选项
+        const options = {
+            el: '#map',             // 容器选择器
+            direction: MindElixir.RIGHT, // 布局方向：LEFT, RIGHT, BOTH
+            draggable: true,        // 允许拖拽
+            toolBar: true,          // 显示工具栏
+            nodeMenu: true,         // 显示节点菜单
+            contextMenu: true,      // 显示右键菜单
+        };
+
+        // 6. 初始化实例
+        const mind = new MindElixir(options);
+
+        // 7. 定义思维导图数据
+        const data = {
+            nodeData: {
+
+                "topic": "计算机网络",
+                "children": [
+                    {
+                        "topic": "网络基础概念",
+                        "children": [
+                            { "topic": "网络定义" },
+                            { "topic": "网络功能" },
+                            { "topic": "网络组成" },
+                            {
+                                "topic": "网络分类", "children": [
+                                    { "topic": "按覆盖范围" },
+                                    { "topic": "按拓扑结构" },
+                                    { "topic": "按传输介质" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "topic": "OSI七层模型",
+                        "children": [
+                            { "topic": "物理层" },
+                            { "topic": "数据链路层" },
+                            { "topic": "网络层" },
+                            { "topic": "传输层" },
+                            { "topic": "会话层" },
+                            { "topic": "表示层" },
+                            { "topic": "应用层" }
+                        ]
+                    },
+                    {
+                        "topic": "TCP/IP协议族",
+                        "children": [
+                            { "topic": "网络接口层" },
+                            {
+                                "topic": "网际层", "children": [
+                                    { "topic": "IP协议" },
+                                    { "topic": "ARP协议" },
+                                    { "topic": "ICMP协议" }
+                                ]
+                            },
+                            {
+                                "topic": "传输层", "children": [
+                                    { "topic": "TCP协议" },
+                                    { "topic": "UDP协议" }
+                                ]
+                            },
+                            {
+                                "topic": "应用层", "children": [
+                                    { "topic": "HTTP/HTTPS" },
+                                    { "topic": "DNS" },
+                                    { "topic": "FTP" },
+                                    { "topic": "SMTP/POP3" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "topic": "网络设备",
+                        "children": [
+                            { "topic": "网卡" },
+                            { "topic": "集线器" },
+                            { "topic": "交换机" },
+                            { "topic": "路由器" },
+                            { "topic": "防火墙" },
+                            { "topic": "中继器" }
+                        ]
+                    },
+                    {
+                        "topic": "传输介质",
+                        "children": [
+                            {
+                                "topic": "有线介质", "children": [
+                                    { "topic": "双绞线" },
+                                    { "topic": "光纤" },
+                                    { "topic": "同轴电缆" }
+                                ]
+                            },
+                            {
+                                "topic": "无线介质", "children": [
+                                    { "topic": "无线电波" },
+                                    { "topic": "微波" },
+                                    { "topic": "红外线" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "topic": "网络地址",
+                        "children": [
+                            {
+                                "topic": "IP地址", "children": [
+                                    { "topic": "IPv4" },
+                                    { "topic": "IPv6" }
+                                ]
+                            },
+                            { "topic": "MAC地址" },
+                            { "topic": "子网掩码" },
+                            { "topic": "网关" }
+                        ]
+                    },
+                    {
+                        "topic": "网络应用",
+                        "children": [
+                            { "topic": "网页浏览" },
+                            { "topic": "文件传输" },
+                            { "topic": "电子邮件" },
+                            { "topic": "远程登录" },
+                            { "topic": "视频会议" }
+                        ]
+                    }
+                ]
+            }
+
+        };
+
+        // 8. 渲染思维导图
+        mind.init(data);
+
+        // 可选：监听操作事件（例如保存数据）
+        mind.bus.addListener('operation', (operation) => {
+            console.log('用户操作:', operation);
+        });
+
+    </script>
+</body>
+
+</html>
